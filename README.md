@@ -21,3 +21,4 @@ loadstring(game:HttpGet(('https://raw.githubusercontent.com/misterwaztaken/auror
 - *Nameless Admin*
 - Infinite Jump **(Holds jump state while spacebar pressed)**
 - Gravity, Jumppower and Walkspeed sliders 
+- Click TP **(tool)**
