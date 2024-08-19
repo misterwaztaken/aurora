@@ -110,11 +110,15 @@ local fs = MoveTab:AddSection({
 })
 
 local ss = SettingTab:AddSection({
-    Name = "Settings"
+    Name = "Options"
 })
 
 local fef = FunTab:AddSection({
 	Name = "FE Fling (Trollface edition)"
+})
+
+local bts = FunTab:AddSection({
+	Name = "Building tools"
 })
 
 local EplrSection = AdminTab:AddSection({
@@ -317,7 +321,7 @@ MoveTab:AddToggle({
 	end    
 })
 
-FunTab:AddButton({
+bts:AddButton({
 	Name = "F3X Building Tools",
 	Callback = function()
       	loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
@@ -330,6 +334,7 @@ ss:AddButton({
       	OrionLib:Destroy()
   	end
 })
+
 
 
 esp:AddButton({
@@ -354,6 +359,13 @@ CharacterTab:AddButton({
 				humanoidRootPart.CFrame = CFrame.new(mouse.Hit.Position)
 			end
 		end)
+	end
+})
+
+CharacterTab:AddButton({
+	Name = "Reset velocity",
+	Callback = function()
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
 	end
 })
 
