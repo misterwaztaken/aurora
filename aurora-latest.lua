@@ -1,7 +1,3 @@
---INF JUMP script made by Youtube: MrGabbe. 
---FLING script made by scuba#0001
---Discord: Mr_G_Curry#6982
-
 -- AURORA REV2 - DISTRIBUTE!!!
 -- You can add whatever you want to this, but name it so it differenciates from our versions!
 -- We luv Celery 
@@ -110,7 +106,7 @@ local esp = AdminTab:AddSection({
 })
 
 local fs = MoveTab:AddSection({
-	Name = "Flight"
+	Name = "Flight and Noclip"
 })
 
 local ss = SettingTab:AddSection({
@@ -196,7 +192,7 @@ tps:AddTextbox({
 	Default = "Label",
 	TextDisappear = false,
 	Callback = function(Value)
-		targetPlayerName = Value -- Replace with the target player's name
+		targetPlayerName = Value
 	end	  
 })
 
@@ -336,11 +332,30 @@ ss:AddButton({
 })
 
 
-CharacterTab:AddButton({
+esp:AddButton({
 	Name = "Unnamed ESP (ic3w0lf22/Unnamed-ESP)",
 	Callback = function()
       		pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua'))() end)
   	end
 })
+
+CharacterTab:AddButton({
+	Name = "Give TP tool",
+	Callback = function()
+		local tool = Instance.new("Tool")
+		tool.RequiresHandle = false
+		tool.Parent = game.Players.LocalPlayer.Backpack
+		tool.Name = "teleport"
+		tool.Activated:Connect(function()
+			local mouse = game.Players.LocalPlayer:GetMouse()
+			local character = game.Players.LocalPlayer.Character
+			local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+			if humanoidRootPart then
+				humanoidRootPart.CFrame = CFrame.new(mouse.Hit.Position)
+			end
+		end)
+	end
+})
+
 
 OrionLib:Init()
