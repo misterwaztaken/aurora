@@ -8,6 +8,8 @@ It has a lot of built-in and external scripts so far, and it is still a **work-i
 loadstring(game:HttpGet(('https://raw.githubusercontent.com/misterwaztaken/aurora/main/aurora-latest.lua')))()
 ```
 
+This project is currently being worked on by @misterwaztaken and @spittingblood
+
 ## Features so far (italics = external UI)
 
 - Teleport to player **(matches names)**
