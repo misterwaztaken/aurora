@@ -24,3 +24,4 @@ This project is currently being worked on by @misterwaztaken and @spittingblood
 - Infinite Jump **(Holds jump state while spacebar pressed)**
 - Gravity, Jumppower and Walkspeed sliders 
 - Click TP **(tool)**
+- *SynSaveInstnace*
