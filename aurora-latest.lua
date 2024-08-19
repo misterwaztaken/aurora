@@ -125,6 +125,9 @@ local EplrSection = AdminTab:AddSection({
 	Name = "Explorer"
 })
 
+local saveinstance_section = AdminTab:AddSection({
+	Name = "SaveInstance"
+})
 local infjmpConnection
 
 MoveTab:AddToggle({ 
@@ -143,10 +146,6 @@ MoveTab:AddToggle({
         end
 	end    
 })
-
-
-
-
 
 
 
@@ -288,7 +287,17 @@ EplrSection:AddButton({
   	end
 })
 
-EplrSection:AddButton({
+local ssi_sm = false
+
+saveinstance_section:AddToggle({
+	Name = "Safe mode",
+	Default = false,
+	Callback = function(Value)
+		ssi_sm = Value
+	end
+})
+
+saveinstance_section:AddButton({
 	Name = "SynSaveInstance",
 	Callback = function()
 		local Params = {
@@ -296,11 +305,29 @@ EplrSection:AddButton({
 		SSI = "saveinstance",
 		}
 		local synsaveinstance = loadstring(game:HttpGet(Params.RepoURL .. Params.SSI .. ".luau", true), Params.SSI)()
-		local Options = {}
-		synsaveinstance(Options)
+		local Options = {SafeMode = ssi_sm}
+		synsaveinstance(Options) 
   	end
 })
 
+
+
+-- MoveTab:AddToggle({ 
+-- 	Name = "Fly (Infinite Jump)",
+-- 	Default = false,
+-- 	Callback = function(Value)
+--         if Value then
+--             infjmpConnection = game:GetService("UserInputService").jumpRequest:Connect(function()
+--                 game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass"Humanoid":ChangeState("Jumping")
+--             end)
+--         else
+--             if infjmpConnection then
+--                 infjmpConnection:Disconnect()
+--                 infjmpConnection = nil
+--             end
+--         end
+-- 	end    
+-- })
 
 local noclipConnection
 
@@ -373,12 +400,26 @@ CharacterTab:AddButton({
 	end
 })
 
+ss:AddButton({
+	Name = "Rejoin [does not always work]",
+	Callback = function()
+		task.wait(5)
+		game:GetService("TeleportService"):Teleport(game.PlaceId)
+	end
+})
+
+ss:AddButton({
+	Name = "Leave",
+	Callback = function()
+		game.Players.LocalPlayer:Kick()
+	end
+})
+
 CharacterTab:AddButton({
 	Name = "Reset velocity",
 	Callback = function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
 	end
 })
-
 
 OrionLib:Init()
