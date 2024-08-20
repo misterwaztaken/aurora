@@ -25,3 +25,4 @@ This project is currently being worked on by @misterwaztaken and @spittingblood
 - Gravity, Jumppower and Walkspeed sliders 
 - Click TP **(tool)**
 - *SynSaveInstance*
+- *Edge's audio logger*
