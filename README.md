@@ -26,3 +26,4 @@ This project is currently being worked on by @misterwaztaken and @spittingblood
 - Click TP **(tool)**
 - *SynSaveInstance*
 - *Edge's audio logger*
+- Humanoid states **(sit, platformstand)**
