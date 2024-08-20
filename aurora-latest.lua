@@ -315,25 +315,6 @@ saveinstance_section:AddButton({
   	end
 })
 
-
-
--- MoveTab:AddToggle({ 
--- 	Name = "Fly (Infinite Jump)",
--- 	Default = false,
--- 	Callback = function(Value)
---         if Value then
---             infjmpConnection = game:GetService("UserInputService").jumpRequest:Connect(function()
---                 game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass"Humanoid":ChangeState("Jumping")
---             end)
---         else
---             if infjmpConnection then
---                 infjmpConnection:Disconnect()
---                 infjmpConnection = nil
---             end
---         end
--- 	end    
--- })
-
 local noclipConnection
 
 MoveTab:AddToggle({ 
