@@ -128,6 +128,11 @@ local EplrSection = AdminTab:AddSection({
 local saveinstance_section = AdminTab:AddSection({
 	Name = "SaveInstance"
 })
+
+local alogger_section = AdminTab:AddSection({
+	Name = "Edge's audiologger"
+})
+
 local infjmpConnection
 
 MoveTab:AddToggle({ 
@@ -419,6 +424,13 @@ CharacterTab:AddButton({
 	Name = "Reset velocity",
 	Callback = function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+	end
+})
+
+alogger_section:AddButton({
+	Name = "Audio Logger",
+	Callback = function()
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/infyiff/backup/main/audiologger.lua'),true))()
 	end
 })
 
