@@ -293,12 +293,20 @@ EplrSection:AddButton({
 })
 
 local ssi_sm = false
-
+local ssi_ns = false
 saveinstance_section:AddToggle({
 	Name = "Safe mode",
 	Default = false,
 	Callback = function(Value)
 		ssi_sm = Value
+	end
+})
+
+saveinstance_section:AddToggle({
+	Name = "No scripts",
+	Default = false,
+	Callback = function(Value)
+		ssi_ns = Value
 	end
 })
 
@@ -310,7 +318,7 @@ saveinstance_section:AddButton({
 		SSI = "saveinstance",
 		}
 		local synsaveinstance = loadstring(game:HttpGet(Params.RepoURL .. Params.SSI .. ".luau", true), Params.SSI)()
-		local Options = {SafeMode = ssi_sm}
+		local Options = {SafeMode = ssi_sm, noscripts = }
 		synsaveinstance(Options) 
   	end
 })
@@ -386,13 +394,13 @@ CharacterTab:AddButton({
 	end
 })
 
-ss:AddButton({
-	Name = "Rejoin [does not always work]",
-	Callback = function()
-		task.wait(5)
-		game:GetService("TeleportService"):Teleport(game.PlaceId)
-	end
-})
+-- ss:AddButton({
+-- 	Name = "Rejoin [does not always work]",
+-- 	Callback = function()
+-- 		task.wait(5)
+-- 		game:GetService("TeleportService"):Teleport(game.PlaceId)
+-- 	end
+-- })
 
 ss:AddButton({
 	Name = "Leave",
@@ -412,6 +420,22 @@ alogger_section:AddButton({
 	Name = "Audio Logger",
 	Callback = function()
 		loadstring(game:HttpGet(('https://raw.githubusercontent.com/infyiff/backup/main/audiologger.lua'),true))()
+	end
+})
+
+CharacterTab:AddToggle({
+	Name = "PlatformStand",
+	Default = false,
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.PlatformStand = Value
+	end
+})
+
+CharacterTab:AddToggle({
+	Name = "Sit",
+	Default = false,
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.Sit = Value
 	end
 })
 
