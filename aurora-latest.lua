@@ -261,7 +261,7 @@ ss:AddBind({
 })
 
 ss:AddButton({
-	Name = "Unload UI",
+	Name = "Unload GUI",
 	Callback = function()
 		OrionLib:Destroy()
 	end
