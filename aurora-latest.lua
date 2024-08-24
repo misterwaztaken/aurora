@@ -260,5 +260,12 @@ ss:AddBind({
 	Callback = function() OrionLib:Toggle() end    
 })
 
+ss:AddButton({
+	Name = "Unload UI",
+	Callback = function()
+		OrionLib:Destroy()
+	end
+})
+
 -- Finalize Setup
 OrionLib:Init()
