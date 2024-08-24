@@ -5,7 +5,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "Aurora Mod Menu Ultimate", HidePremium = false, IntroText = "Aurora", SaveConfig = true, ConfigFolder = "Aurora"})
 
 local Players = game:GetService("Players")
-local lp = game.Players.LocalPlayer
+local lp = Players.LocalPlayer
 local targetPlayerName = ""
 local FlingTarget = ""
 
