@@ -9,8 +9,6 @@ local lp = Players.LocalPlayer
 local targetPlayerName = ""
 local FlingTarget = ""
 
--- defs from fling script end
-
 local function gplr(String)
 	local Found = {}
 	local strl = String:lower()
@@ -48,14 +46,6 @@ local function notif(str,dur)
 		Duration = dur or 3
 	})
 end
-
--- defs from fling script end
-
-
-
-
-
-
 
 local MoveTab = Window:MakeTab({
 	Name = "Fly & TP",
