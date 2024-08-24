@@ -5,13 +5,11 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "Aurora Mod Menu Ultimate", HidePremium = false, IntroText = "Aurora", SaveConfig = true, ConfigFolder = "Aurora"})
 
 local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
+local lp = game.Players.LocalPlayer
 local targetPlayerName = ""
 local FlingTarget = ""
 
 -- defs from fling script end
-
-local lp = game:FindService("Players").LocalPlayer
 
 local function gplr(String)
 	local Found = {}
@@ -163,7 +161,7 @@ CctrSection:AddSlider({
 	Increment = 1,
 	ValueName = "Speed",
 	Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+		lp.Character.Humanoid.WalkSpeed = Value
 	end    
 })
 
@@ -176,7 +174,7 @@ CctrSection:AddSlider({
 	Increment = 1,
 	ValueName = "Power",
 	Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+		lp.Character.Humanoid.JumpPower = Value
 	end    
 })
 
@@ -331,8 +329,8 @@ MoveTab:AddToggle({
 	Callback = function(Value)
         if Value then
             noclipConnection = game:GetService("RunService").RenderStepped:Connect(function()
-                if game.Players.LocalPlayer.Character then
-                    for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                if lp.Character then
+                    for _, v in pairs(lp.Character:GetDescendants()) do
                         if v:IsA("BasePart") then
                             v.CanCollide = false
                         end
@@ -343,8 +341,8 @@ MoveTab:AddToggle({
             if noclipConnection then
                 noclipConnection:Disconnect()
                 noclipConnection = nil
-                if game.Players.LocalPlayer.Character then
-                    for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                if lp.Character then
+                    for _, v in pairs(lp.Character:GetDescendants()) do
                         if v:IsA("BasePart") then
                             v.CanCollide = true
                         end
@@ -381,11 +379,11 @@ CharacterTab:AddButton({
 	Callback = function()
 		local tool = Instance.new("Tool")
 		tool.RequiresHandle = false
-		tool.Parent = game.Players.LocalPlayer.Backpack
+		tool.Parent = lp.Backpack
 		tool.Name = "teleport"
 		tool.Activated:Connect(function()
-			local mouse = game.Players.LocalPlayer:GetMouse()
-			local character = game.Players.LocalPlayer.Character
+			local mouse = lp:GetMouse()
+			local character = lp.Character
 			local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
 			if humanoidRootPart then
 				humanoidRootPart.CFrame = CFrame.new(mouse.Hit.Position)
@@ -405,14 +403,14 @@ CharacterTab:AddButton({
 ss:AddButton({
 	Name = "Leave",
 	Callback = function()
-		game.Players.LocalPlayer:Kick()
+		lp:Kick()
 	end
 })
 
 CharacterTab:AddButton({
 	Name = "Reset velocity",
 	Callback = function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+		lp.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
 	end
 })
 
@@ -427,7 +425,7 @@ CharacterTab:AddToggle({
 	Name = "PlatformStand",
 	Default = false,
 	Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.PlatformStand = Value
+		lp.Character.Humanoid.PlatformStand = Value
 	end
 })
 
@@ -435,7 +433,7 @@ CharacterTab:AddToggle({
 	Name = "Sit",
 	Default = false,
 	Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.Sit = Value
+		lp.Character.Humanoid.Sit = Value
 	end
 })
 
