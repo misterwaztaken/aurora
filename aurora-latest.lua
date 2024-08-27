@@ -94,6 +94,7 @@ CctrSection:AddSlider({
 	end    
 })
 
+
 CctrSection:AddSlider({
 	Name = "JumpPower", Min = 0, Max = 100, Default = 50, Increment = 1, ValueName = "Power",
 	Callback = function(Value)
@@ -216,6 +217,12 @@ saveinstance_section:AddButton({
 	end
 })
 
+alogger_section:AddButton({
+	Name = "Audio Logger",
+	Callback = function()
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/infyiff/backup/main/audiologger.lua'),true))()
+	end
+})
 -- Noclip
 MoveTab:AddToggle({ 
 	Name = "Noclip", Default = false,
