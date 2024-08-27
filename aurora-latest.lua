@@ -1,3 +1,4 @@
+
 -- AURORA REV2 - DISTRIBUTE!!!
 -- You can add whatever you want to this, but name it so it differentiates from our versions!
 -- We luv Celery 
@@ -254,11 +255,11 @@ esp:AddButton({
 })
 
 -- Miscellaneous Settings
-ss:AddBind({
-	Name = "Toggle GUI", Default = Enum.KeyCode.RightShift,
-	Hold = false,
-	Callback = function() OrionLib:Toggle() end    
-})
+-- ss:AddBind({
+-- 	Name = "Toggle GUI", Default = Enum.KeyCode.RightShift,
+-- 	Hold = false,
+-- 	Callback = function() OrionLib:Toggle() end    
+-- })
 
 ss:AddButton({
 	Name = "Unload GUI",
