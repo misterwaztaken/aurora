@@ -56,6 +56,8 @@ local SettingTab = Window:MakeTab({ Name = "Settings", Icon = "rbxassetid://4483
 -- Create Sections
 local AdminSection = AdminTab:AddSection({ Name = "Admin" })
 local CctrSection = CharacterTab:AddSection({ Name = "Character" })
+local chrstates = CharacterTab:AddSection({ Name = "Humanoid States" })
+local chro = CharacterTab:AddSection({ Name = "Misc" })
 local tps = MoveTab:AddSection({ Name = "Teleportation" })
 local esp = AdminTab:AddSection({ Name = "ESP" })
 local fs = MoveTab:AddSection({ Name = "Flight and Noclip" })
@@ -111,7 +113,7 @@ CctrSection:AddSlider({
 	end    
 })
 
-CharacterTab:AddButton({
+chro:AddButton({
 	Name = "Give TP tool",
 	Callback = function()
 		local tool = Instance.new("Tool")
@@ -129,7 +131,7 @@ CharacterTab:AddButton({
 	end
 })
 
-CharacterTab:AddToggle({
+chro:AddToggle({
 	Name = "Screen Blur",
 	Default = false,
 	Callback = function(Value)
@@ -145,6 +147,22 @@ CharacterTab:AddToggle({
 				game:GetService("Lighting"):FindFirstChildOfClass("BlurEffect").Size = 0
 			end
 		end
+	end
+})
+
+chrstates:AddToggle({
+	Name = "Sit",
+	Default = false,
+	Callback = function(Value)
+		game:GetService("Players").LocalPlayer.Character.Humanoid.Sit = Value
+	end
+})
+
+chrstates:AddToggle({
+	Name = "PlatformStand",
+	Default = false,
+	Callback = function(Value)
+		game:GetService("Players").LocalPlayer.Character.Humanoid.PlatformStand = Value
 	end
 })
 
