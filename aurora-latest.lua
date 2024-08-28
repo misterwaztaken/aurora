@@ -110,6 +110,21 @@ CctrSection:AddSlider({
 	end    
 })
 
+CctrSection:AddButton({
+	Name = "Click TP"
+	Callback = function(Value)
+		local lp = game:GetService("Players").LocalPlayer
+		local chr = lp.Character
+		local hrp = chr.HumanoidRootPart
+		local tool = Instance.new("Tool", lp.Backpack)
+		tool.Name = "Click TP"
+		tool.Activated:Connect(function()
+			local m = lp:GetMouse()
+			hrp:PivotTo(CFrame.new(m.Hit.Position))
+		end)
+	end    
+})
+
 -- Teleport to Player
 tps:AddTextbox({
 	Name = "Target", Default = "Label", TextDisappear = false,
