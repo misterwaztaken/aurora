@@ -248,8 +248,7 @@ MoveTab:AddToggle({
 bts:AddButton({
 	Name = "Btools",
 	Callback = function()
-		local tool = Instance.new("HopperBin", lp.Backpack)
-		tool.BinType = Enum.BinType.Build
+		loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
 	end
 })
 
