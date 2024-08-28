@@ -1,4 +1,5 @@
 
+
 -- AURORA REV2 - DISTRIBUTE!!!
 -- You can add whatever you want to this, but name it so it differentiates from our versions!
 -- We luv Celery 
@@ -110,20 +111,43 @@ CctrSection:AddSlider({
 	end    
 })
 
-CctrSection:AddButton({
-	Name = "Click TP",
-	Callback = function(Value)
-		local lp = game:GetService("Players").LocalPlayer
-		local chr = lp.Character
-		local hrp = chr.HumanoidRootPart
-		local tool = Instance.new("Tool", lp.Backpack)
+CharacterTab:AddButton({
+	Name = "Give TP tool",
+	Callback = function()
+		local tool = Instance.new("Tool")
+		tool.RequiresHandle = false
+		tool.Parent = game.Players.LocalPlayer.Backpack
 		tool.Name = "Click TP"
 		tool.Activated:Connect(function()
-			local m = lp:GetMouse()
-			hrp:PivotTo(CFrame.new(m.Hit.Position))
+			local mouse = game.Players.LocalPlayer:GetMouse()
+			local character = game.Players.LocalPlayer.Character
+			local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+			if humanoidRootPart then
+				humanoidRootPart.CFrame = CFrame.new(mouse.Hit.Position)
+			end
 		end)
-	end    
+	end
 })
+
+CharacterTab:AddToggle({
+	Name = "Screen Blur",
+	Default = false,
+	Callback = function(Value)
+		if Value then
+			if game:GetService("Lighting"):FindFirstChildOfClass("BlurEffect") then
+				game:GetService("Lighting"):FindFirstChildOfClass("BlurEffect").Size = 100
+			else
+				local blur = Instance.new("BlurEffect", game:GetService("Lighting"))
+				blur.Size = 100
+			end
+		else
+			if game:GetService("Lighting"):FindFirstChildOfClass("BlurEffect") then
+				game:GetService("Lighting"):FindFirstChildOfClass("BlurEffect").Size = 0
+			end
+		end
+	end
+})
+
 
 -- Teleport to Player
 tps:AddTextbox({
@@ -281,6 +305,24 @@ esp:AddButton({
 -- 	Hold = false,
 -- 	Callback = function() OrionLib:Toggle() end    
 -- })
+
+ss:AddButton({
+	Name = "Leave",
+	Callback = function()
+		if game:GetService("Lighting"):FindFirstChildOfClass("BlurEffect") then
+			game:GetService("Lighting"):FindFirstChildOfClass("BlurEffect").Size = math.max
+			task.wait(0.1)
+			game.Players.LocalPlayer:Kick()
+
+			else
+				local blur = Instance.new("BlurEffect", game:GetService("Lighting"))
+				blur.Size = math.max
+				task.wait(0.1)
+				game.Players.LocalPlayer:Kick()
+		end
+	end
+})
+
 
 ss:AddButton({
 	Name = "Unload GUI",
