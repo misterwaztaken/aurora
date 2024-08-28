@@ -111,7 +111,7 @@ CctrSection:AddSlider({
 })
 
 CctrSection:AddButton({
-	Name = "Click TP"
+	Name = "Click TP",
 	Callback = function(Value)
 		local lp = game:GetService("Players").LocalPlayer
 		local chr = lp.Character
